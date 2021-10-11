@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="1000.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jSqlDeveloper.jSqldevMainRootController">
+   <top>
+   
+      <VBox prefHeight="82.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+         <children>
+            <MenuBar>
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                  <items>
+                  <MenuItem mnemonicParsing="false" onAction="#DBConnect" text="Connection" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleConnectionClose" text="Connection close" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleNew" text="New File" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleOpen" text="Open File">
+                  	<accelerator>
+                  		<KeyCodeCombination alt="DOWN" code="O" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                  	</accelerator>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="false" onAction="#handleSave" text="Save File">
+                  	<accelerator>
+                  		<KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                  	</accelerator>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="false" onAction="#handleAnotherSave" text="Another Name Save File">
+                  	<accelerator>
+                  		<KeyCodeCombination alt="DOWN" code="S" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                  	</accelerator>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="false" onAction="#handleClose" text="Close" />                               
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Run">
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction="#handleRunSQL" text="Run SQL">
+                    	<accelerator>
+                    		<KeyCodeCombination alt="UP" code="ENTER" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                    	</accelerator>
+                    </MenuItem>
+                  </items>
+                  
+                </Menu>
+                
+              </menus>
+            </MenuBar>
+            <ToolBar prefHeight="40.0" prefWidth="200.0">
+              <items>
+	              <Button mnemonicParsing="false" onAction="#handleNew">
+	              	<graphic>
+	              		<ImageView>
+	              			<image>
+	              				<Image url="@../../image/new.png" />
+	              			</image>
+	              		</ImageView>
+	              	</graphic>
+	              
+	                	<tooltip>
+	                		<Tooltip text="new (ctrl+N)" />
+	                	</tooltip>
+	                </Button>
+	                <Button mnemonicParsing="false" onAction="#handleOpen">
+	                	<tooltip>
+	                		<Tooltip text="Open File (alt+O)" />
+	                	</tooltip>
+	                	
+	                	<graphic>
+	                		<ImageView>
+	                			<image>
+	                				<Image url="@../../image/open-folder.png" />
+	                			</image>
+	                		</ImageView>
+	                	</graphic>
+	                </Button>
+	                
+	                <Button mnemonicParsing="false" onAction="#handleAnotherSave">
+	                	<graphic>
+	                		<ImageView>
+	                			<image>
+	                				<Image url="@../../image/save.png" />
+	                			</image>
+	                		</ImageView>
+	                	</graphic>
+	                	<tooltip>
+	                		<Tooltip text="Another Name File Save (alt+S)" />
+	                	</tooltip>
+	                
+	                </Button>
+              
+	                <Button mnemonicParsing="false" onAction="#handleRunSQL">
+	                	<graphic>
+	                		<ImageView>
+	                			<image>
+	                				<Image url="@../../image/play.png" />
+	                			</image>
+	                		</ImageView>
+	                	</graphic>
+	                
+	                	<tooltip>
+	                		<Tooltip text="Run (ctrl+Enter)" />
+	                	</tooltip>
+	                </Button>
+	                
+	                <Button mnemonicParsing="false" onAction="#handleConnectionClose">
+	                	<graphic>
+	                		<ImageView>
+	                			<image>
+	                				<Image url="@../../image/stop.png" />
+	                			</image>
+	                		</ImageView>
+	                	</graphic>
+	                	
+	                	<tooltip>
+	                		<Tooltip text="Connection close" />
+	                	</tooltip>
+	                </Button>
+	                <Label text="Font Size : " />
+	                <TextField fx:id="txtSize" prefHeight="23.0" prefWidth="51.0" text="25" />
+                  <Label text="Font Color : " />
+                  <ComboBox fx:id="comboColor" prefHeight="23.0" prefWidth="111.0" onAction="#handleComboBox"/>
+              </items>
+            </ToolBar>
+         </children>
+      </VBox>
+   </top>
+   <center>
+      <TextArea fx:id="txtSqlArea" prefHeight="238.0" prefWidth="800.0" BorderPane.alignment="CENTER" />
+   </center>
+   <bottom>
+   	<StackPane fx:id="stackPane" prefHeight="363.0" prefWidth="1600.0" BorderPane.alignment="CENTER">
+   			<children>
+      			<TableView fx:id="tabView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      			<TextArea fx:id="txtResult" editable="false" prefHeight="200.0" prefWidth="200.0" />
+  			</children>
+      </StackPane>
+   </bottom>
+   <left>
+      <ListView fx:id="listView" prefHeight="239.0" prefWidth="202.0" BorderPane.alignment="CENTER" />
+   </left>
+</BorderPane>
